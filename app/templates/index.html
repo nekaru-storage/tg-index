@@ -40,14 +40,14 @@
 
 <div class="m-2">
     <div class="block flex flex-wrap sm:justify-center items-center text-center break-all">
-        {% for item in item_list %}
+        {% for item in item_list % if item.insight != 'sticker.webp'}
 
         <!-- Card  -->
         <div title="{% if item.media %} {{item.mime_type}} | {{item.human_size}} {% else %} Text message {% endif %}"
             href="{{item.url}}"
             class="text-sm items-center justify-center w-full min-h-full sm:w-2/5 md:w-1/4 lg:w-1/6 rounded m-2 shadow hover:shadow-lg dark:bg-red-700">
 
-            {% if item.media %}
+            {% if (item.media) and (item.insight != 'sticker.webp') %}
 
                 <a href="{{item.url}}"><img src="{{item.thumbnail}}" class="w-full rounded shadow-inner"></a>
                 <div class="p-2">{{item.insight}}</div>
